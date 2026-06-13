@@ -10,6 +10,11 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 const isPublicPath = (pathname: string | null): boolean =>
   !!pathname && (pathname === "/login" || pathname.startsWith("/login/"));
 
+// Sección mobile-nativa (App Store): trae su propio shell (tab bar inferior),
+// sin el sidebar/header de escritorio.
+const isMobileNativePath = (pathname: string | null): boolean =>
+  !!pathname && (pathname === "/m" || pathname.startsWith("/m/"));
+
 // Preview sin backend (GitHub Pages): no mostrar el aviso de expiración de sesión.
 const PREVIEW_BYPASS_AUTH = process.env.NEXT_PUBLIC_PREVIEW_BYPASS_AUTH === "1";
 
@@ -38,7 +43,7 @@ export default function AuthenticatedLayout({
     if (!isAuthenticated && !isPublicPath(pathname)) {
       router.replace("/login");
     } else if (isAuthenticated && (pathname === "/login" || pathname === "/")) {
-      router.replace("/mimbral360");
+      router.replace("/m/pedidos");
     }
   }, [hydrated, isAuthenticated, pathname, router]);
 
@@ -52,6 +57,11 @@ export default function AuthenticatedLayout({
   }, []);
 
   if (!isAuthenticated) {
+    return <>{children}</>;
+  }
+
+  // Las pantallas mobile-nativas (/m/*) usan su propio layout con tab bar.
+  if (isMobileNativePath(pathname)) {
     return <>{children}</>;
   }
 
