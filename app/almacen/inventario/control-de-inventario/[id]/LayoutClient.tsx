@@ -1,0 +1,29 @@
+"use client";
+
+import React from "react";
+
+import { TabbedLayout } from "@/components/ui/tabbed-layout/TabbedLayout";
+import {
+    DocumentTextIcon,
+    ChatBubbleLeftRightIcon,
+    ClockIcon,
+    QueueListIcon,
+} from "@heroicons/react/24/outline";
+
+const TABS = [
+    { id: "resumen", label: "RESUMEN", icon: DocumentTextIcon },
+    { id: "items", label: "ITEMS", icon: QueueListIcon },
+    { id: "comentarios", label: "COMENTARIOS", icon: ChatBubbleLeftRightIcon },
+    { id: "logs", label: "LOGS", icon: ClockIcon },
+];
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <TabbedLayout
+      tabs={TABS}
+      basePath="/almacen/inventario/control-de-inventario"
+    >
+      {children}
+    </TabbedLayout>
+  );
+}

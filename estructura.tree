@@ -1,0 +1,197 @@
+├── .prettierrc
+├── .vscode
+│  └── settings.json
+├── api
+│  └── api.ts
+├── app
+│  ├── [[...slug]]
+│  │  └── page.tsx
+│  ├── context
+│  │  └── auth
+│  │    └── AuthContext.tsx
+│  ├── delivery
+│  │  ├── envios
+│  │  │  └── page.tsx
+│  │  ├── rutas
+│  │  │  ├── [id]
+│  │  │  │  └── page.tsx
+│  │  │  └── page.tsx
+│  │  └── transportistas
+│  │    └── page.tsx
+│  ├── layout.tsx
+│  ├── login
+│  │  └── page.tsx
+│  ├── pedidos
+│  │  ├── [id]
+│  │  │  ├── bultos
+│  │  │  │  └── page.tsx
+│  │  │  ├── envios
+│  │  │  │  └── page.tsx
+│  │  │  ├── historial
+│  │  │  │  └── page.tsx
+│  │  │  ├── items
+│  │  │  │  └── page.tsx
+│  │  │  ├── layout.tsx
+│  │  │  └── page.tsx
+│  │  ├── auditorias
+│  │  │  ├── [id]
+│  │  │  │  ├── contenido
+│  │  │  │  │  └── page.tsx
+│  │  │  │  ├── layout.tsx
+│  │  │  │  └── page.tsx
+│  │  │  └── page.tsx
+│  │  ├── nuevo
+│  │  │  └── page.tsx
+│  │  └── page.tsx
+│  └── picking
+│    ├── [id]
+│    │  └── page.tsx
+│    ├── faltantes
+│    │  └── page.tsx
+│    ├── layout.tsx
+│    ├── olas
+│    │  └── page.tsx
+│    ├── page.tsx
+│    ├── productividad
+│    │  └── page.tsx
+│    └── rondas
+│      ├── layout.tsx
+│      └── page.tsx
+├── components
+│  ├── badge
+│  │  └── status.tsx
+│  ├── button
+│  │  ├── action-button.tsx
+│  │  └── primary.tsx
+│  ├── input
+│  │  ├── index.tsx
+│  │  └── textarea.tsx
+│  ├── layout
+│  │  ├── authenticated-layout.tsx
+│  │  ├── page-header.tsx
+│  │  ├── pagination.tsx
+│  │  └── sidebar.tsx
+│  ├── modal
+│  │  ├── action.tsx
+│  │  └── actions.tsx
+│  ├── pedidos
+│  │  ├── CancelOrderAlert.tsx
+│  │  ├── ChangeStoreForm.tsx
+│  │  └── PedidoActions.tsx
+│  ├── select
+│  │  └── index.tsx
+│  ├── table
+│  │  ├── filters.tsx
+│  │  ├── header.tsx
+│  │  ├── index.tsx
+│  │  └── pagination.tsx
+│  └── tabnav
+│    └── TabNav.tsx
+├── data
+│  ├── mocks
+│  │  ├── auditorias.ts
+│  │  ├── auth.ts
+│  │  ├── delivery.ts
+│  │  ├── detalle-pedido.ts
+│  │  ├── faltantes.ts
+│  │  ├── lista-pedidos.ts
+│  │  ├── olas.ts
+│  │  ├── productividad.ts
+│  │  └── rondas.ts
+│  └── types
+│    ├── auditorias.ts
+│    ├── auth.ts
+│    ├── delivery.ts
+│    ├── detalle-pedido.ts
+│    ├── faltantes.ts
+│    ├── lista-pedidos.ts
+│    ├── nuevo-pedido.ts
+│    ├── olas.ts
+│    ├── productividad.ts
+│    └── rondas.ts
+├── estructura.tree
+├── hooks
+│  ├── useFetchBultos.ts
+│  ├── useFetchDetallePedido.ts
+│  ├── useFetchDetallePedidoItems.ts
+│  ├── useFetchHistoryStore.ts
+│  └── useFetchPedidos.ts
+├── jsconfig.json
+├── lib
+│  └── utils.ts
+├── middleware.ts
+├── next-env.d.ts
+├── next.config.js
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── pages-components
+│  └── picking
+│    ├── lista-picking
+│    │  ├── DetalleView.tsx
+│    │  └── PickingView.tsx
+│    ├── olas
+│    │  └── OlasView.tsx
+│    └── productividad
+│      └── ProductividadView.tsx
+├── postcss.config.js
+├── public
+│  ├── electron.js
+│  ├── favicon.ico
+│  ├── index.html
+│  ├── manifest.json
+│  ├── robots.txt
+│  └── watchman-config.json
+├── README.md
+├── stores
+│  ├── delivery.ts
+│  ├── detalle-pedidos.tsx
+│  ├── faltantes.tsx
+│  ├── lista-pedidos.tsx
+│  ├── nuevo-pedido.tsx
+│  ├── olas.ts
+│  ├── productividad.ts
+│  └── rondas.ts
+├── styles
+│  └── globals.css
+├── tailwind.config.js
+├── tsconfig.json
+├── utils
+│  ├── status.ts
+│  └── types.ts
+└── views
+  ├── EnviosView
+  │  ├── EnviosView.tsx
+  │  ├── RutaDetalleView.tsx
+  │  ├── RutasView.tsx
+  │  └── TransportistasView.tsx
+  ├── LoginView
+  │  └── Login.tsx
+  └── Pedidos
+    ├── Auditorias
+    │  ├── AuditoriaView.tsx
+    │  ├── control
+    │  │  └── ControlView.tsx
+    │  └── resumen
+    │    └── ResumenAuditoria.tsx
+    ├── Detalles-Pedido
+    │  ├── Bultos-pedido
+    │  │  └── BultosView.tsx
+    │  ├── components
+    │  │  ├── Card.tsx
+    │  │  └── ItemsTable.tsx
+    │  ├── HistoryView.tsx
+    │  ├── ItemsView.tsx
+    │  ├── ResumenView.tsx
+    │  └── ShipmentsView.tsx
+    ├── Faltantes
+    │  └── FaltantesView.tsx
+    ├── Nuevo-Pedido
+    │  ├── cliente.tsx
+    │  ├── index.tsx
+    │  ├── items.tsx
+    │  ├── ItemsTable.tsx
+    │  ├── metodoEntrega.tsx
+    │  ├── nuevo-pedido-view.tsx
+    │  └── pago.tsx
+    └── PedidosView.tsx

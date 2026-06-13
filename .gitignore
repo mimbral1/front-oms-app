@@ -1,0 +1,29 @@
+node_modules/
+.next
+next-env.d.tsbuild/
+build/
+
+.README.md
+
+dist/
+
+.env
+.env*.local
+dist/
+vistas_marketplace/
+Mimbral Mercadolibre/
+claude.md
+
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Next static export (App Store build)
+/out
+
+# Capacitor / iOS
+/ios/App/Pods
+/ios/App/App/public
+/ios/App/DerivedData
+/ios/.gradle
+*.xcuserstate
+.DS_Store

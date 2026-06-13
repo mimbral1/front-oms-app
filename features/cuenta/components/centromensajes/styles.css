@@ -1,0 +1,121 @@
+/* styles.css */
+
+/* Estilos para el Monaco Editor */
+.monaco-editor {
+    background-color: #272822; /* Fondo más oscuro (Monokai) */
+    color: #f8f8f2;
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 6px; 
+}
+
+.monaco-editor .monaco-editor-background {
+    background-color: #272822; 
+}
+
+.monaco-editor .monaco-editor .line-numbers {
+    color: #75715e; 
+}
+
+.monaco-editor .monaco-editor .token.keyword {
+    color: #f92672; 
+}
+
+.monaco-editor .monaco-editor .token.string {
+    color: #e6db74;
+}
+
+.monaco-editor .monaco-editor .token.comment {
+    color: #6272a4; 
+}
+
+.monaco-editor .monaco-editor .token.variable {
+    color: #f8f8f2; 
+}
+
+.monaco-editor .monaco-editor .token.number {
+    color: #ae81ff; 
+}
+
+.preview-body a {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+/* Estilos para las tarjetas */
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #2d3436; 
+}
+
+.card-icon {
+    color: #7f8c8d; 
+}
+
+/* Estilos para el iframe de vista previa */
+.preview-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #f8f8f2;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; 
+}
+
+/* Estilos para la vista previa del HTML */
+.preview-body {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    height: 400px;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    overflow-x: hidden;
+}
+
+.editor-container {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.editor-container textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+    resize: none;
+}

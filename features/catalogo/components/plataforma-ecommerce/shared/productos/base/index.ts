@@ -1,0 +1,1 @@
+export { MarketplaceProductosAtributosSection } from "./MarketplaceProductosAtributosSection";

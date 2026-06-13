@@ -1,0 +1,33 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "python-envs.pythonProjects": [
+    {
+      "path": "app/picking/configuraciones/multipicking/sectores",
+      "envManager": "ms-python.python:system",
+      "packageManager": "ms-python.python:pip"
+    },
+    {
+      "path": "views/Delivery/Configuraciones/Feriados/Nuevo",
+      "envManager": "ms-python.python:system",
+      "packageManager": "ms-python.python:pip"
+    },
+    {
+      "path": "components/ui/single-date-filter",
+      "envManager": "ms-python.python:system",
+      "packageManager": "ms-python.python:pip"
+    }
+  ],
+  "python-envs.defaultEnvManager": "ms-python.python:system"
+}
