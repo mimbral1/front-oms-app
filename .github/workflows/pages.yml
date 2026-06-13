@@ -31,6 +31,8 @@ jobs:
       - name: Build static export (subpath de Pages)
         env:
           PAGES_BASE_PATH: /front-oms-app
+          # Preview sin backend: permite navegar la app sin login real.
+          NEXT_PUBLIC_PREVIEW_BYPASS_AUTH: "1"
         run: npm run build:app
       - name: Evitar procesamiento Jekyll (_next)
         run: touch out/.nojekyll

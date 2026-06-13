@@ -18,6 +18,12 @@ import { fetchWithAuthToken } from "@/lib/http/client";
 
 const PLATFORM_ID = 1;
 
+// Preview de solo lectura (GitHub Pages sin backend): permite entrar sin login.
+// NO se activa en el build de iOS/Capacitor (la env queda sin definir).
+const PREVIEW_BYPASS_AUTH = process.env.NEXT_PUBLIC_PREVIEW_BYPASS_AUTH === "1";
+const PREVIEW_DEMO_TOKEN =
+  "eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOiJkZW1vIiwiZW1haWwiOiJkZW1vQG1pbWJyYWwuY2wiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjk5OTk5OTk5OTl9.";
+
 export type Role = "admin" | "manager" | "user";
 
 // --- Helpers JWT/tiempo (compatibles con lo de SessionTimeoutModal) ---
@@ -190,6 +196,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Inicializa desde cookie primero (servidor/cliente)
   useEffect(() => {
+    // Modo preview (GitHub Pages sin backend): auto-autentica una sesión demo
+    // para poder navegar la app sin login. Se activa solo con la env de preview;
+    // el build real de iOS/Capacitor no la define.
+    if (PREVIEW_BYPASS_AUTH) {
+      setAuthState((s) =>
+        s.isAuthenticated
+          ? s
+          : {
+              isAuthenticated: true,
+              user: {
+                id: "demo",
+                email: "demo@mimbral.cl",
+                nombre: "Demo Mimbral",
+                avatarUrl: null,
+                role: "admin",
+              },
+              token: PREVIEW_DEMO_TOKEN,
+              expiraEn: 9999999999,
+            }
+      );
+      return;
+    }
+
     // purga del key legado si existiera
     try { localStorage.removeItem(LEGACY_LS_TOKEN_KEY); } catch { }
 

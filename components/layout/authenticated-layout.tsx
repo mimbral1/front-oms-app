@@ -10,6 +10,9 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 const isPublicPath = (pathname: string | null): boolean =>
   !!pathname && (pathname === "/login" || pathname.startsWith("/login/"));
 
+// Preview sin backend (GitHub Pages): no mostrar el aviso de expiración de sesión.
+const PREVIEW_BYPASS_AUTH = process.env.NEXT_PUBLIC_PREVIEW_BYPASS_AUTH === "1";
+
 export default function AuthenticatedLayout({
   children,
 }: {
@@ -90,7 +93,7 @@ export default function AuthenticatedLayout({
         {/* Spacer for mobile header */}
         <div className="h-14 sm:hidden" />
         {children}
-        {showSessionModal && <SessionTimeoutModal />}
+        {!PREVIEW_BYPASS_AUTH && showSessionModal && <SessionTimeoutModal />}
       </main>
     </div>
   );
