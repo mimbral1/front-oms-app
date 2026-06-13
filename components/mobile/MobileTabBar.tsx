@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, ClipboardList, Truck, Warehouse } from "lucide-react";
+import { ShoppingCart, ClipboardList, Truck, Warehouse, LayoutGrid } from "lucide-react";
 
 const TABS = [
   { href: "/m/pedidos", label: "Pedidos", Icon: ShoppingCart },
   { href: "/m/picking", label: "Picking", Icon: ClipboardList },
   { href: "/m/delivery", label: "Delivery", Icon: Truck },
   { href: "/m/almacen", label: "Almacén", Icon: Warehouse },
+  { href: "/m/mas", label: "Más", Icon: LayoutGrid },
 ];
 
 export default function MobileTabBar() {
