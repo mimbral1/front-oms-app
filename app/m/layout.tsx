@@ -10,7 +10,12 @@ export default function MobileLayout({
 }) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="mx-auto max-w-md pb-24">{children}</div>
+      <div
+        className="mx-auto max-w-md pb-24"
+        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+      >
+        {children}
+      </div>
       <MobileTabBar />
     </div>
   );
