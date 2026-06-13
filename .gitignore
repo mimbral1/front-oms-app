@@ -20,6 +20,9 @@ tsconfig.tsbuildinfo
 # Next static export (App Store build)
 /out
 
+# Preview screenshots (scripts/preview-screenshots.mjs)
+/screenshots
+
 # Capacitor / iOS
 /ios/App/Pods
 /ios/App/App/public
