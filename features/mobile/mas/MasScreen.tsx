@@ -2,8 +2,9 @@
 
 import { useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronRight, ChevronLeft, Clock } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { buildMenuItems, type SubMenuItem } from "@/lib/menu-items";
+import NativeListScreen, { genericConfigFor } from "@/features/mobile/_generic/NativeListScreen";
 
 type Node = {
   text: string;
@@ -123,18 +124,13 @@ export default function MasScreen() {
     );
   }
 
-  // ---- Placeholder de sección sin pantalla nativa ----
+  // ---- Sección leaf: pantalla nativa genérica (lista + detalle) ----
   if (current.placeholder) {
     return (
-      <div className="pt-2">
-        <Header title={current.text} onBack={() => setStack((s) => s.slice(0, -1))} />
-        <div className="flex flex-col items-center justify-center px-6 pt-24 text-center text-gray-400">
-          <Clock className="h-10 w-10" />
-          <p className="mt-3 text-[16px] font-semibold text-gray-500">{current.text}</p>
-          <p className="mt-1 text-[14px]">Pantalla nativa en preparación.</p>
-          <p className="mt-1 text-[13px]">Se conectará con datos reales del backend.</p>
-        </div>
-      </div>
+      <NativeListScreen
+        config={genericConfigFor(current.text)}
+        onBack={() => setStack((s) => s.slice(0, -1))}
+      />
     );
   }
 

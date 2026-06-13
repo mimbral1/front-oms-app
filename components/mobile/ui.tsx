@@ -11,6 +11,7 @@ import {
   RefreshCw,
   Bell,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 
 // Formatea CLP: 47980 -> "$47.980"
@@ -21,14 +22,26 @@ export function ScreenHeader({
   subtitle,
   onAdd,
   onRefresh,
+  onBack,
 }: {
   title: string;
   subtitle?: string;
   onAdd?: () => void;
   onRefresh?: () => void;
+  onBack?: () => void;
 }) {
   return (
-    <div className="flex items-start justify-between px-4 pt-3">
+    <div className="px-4 pt-3">
+      {onBack && (
+        <button
+          onClick={onBack}
+          className="-ml-2 mb-1 flex items-center gap-0.5 text-[15px] font-medium text-blue-600 active:opacity-70"
+        >
+          <ChevronLeft className="h-5 w-5" />
+          Volver
+        </button>
+      )}
+      <div className="flex items-start justify-between">
       <div className="min-w-0">
         <h1 className="text-[28px] font-extrabold leading-tight tracking-tight text-gray-900">
           {title}
@@ -56,6 +69,7 @@ export function ScreenHeader({
             <Plus className="h-6 w-6" />
           </button>
         )}
+      </div>
       </div>
     </div>
   );

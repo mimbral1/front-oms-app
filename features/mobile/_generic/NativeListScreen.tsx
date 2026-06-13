@@ -10,6 +10,33 @@ import {
   ChevronRight,
   type BadgeTone,
 } from "@/components/mobile/ui";
+import { FileText, Clock } from "lucide-react";
+import { NativeDetailView, detailFromItem } from "./NativeDetail";
+
+// Genera una config nativa de muestra para una sección de submenú (leaf) que aún
+// no tiene pantalla a medida. Así cada sección abre una pantalla real (lista +
+// detalle), no un placeholder. Los datos se reemplazarán por los del backend.
+export function genericConfigFor(title: string): NativeListConfig {
+  const items: NativeItem[] = Array.from({ length: 6 }).map((_, i) => {
+    const ok = i % 3 === 0;
+    return {
+      id: `${title}-${1000 + i}`,
+      title: `${title} #${1000 + i}`,
+      lines: [
+        { Icon: FileText, text: `Registro ${1000 + i}` },
+        { Icon: Clock, text: "Actualizado hoy" },
+      ],
+      badges: [{ label: ok ? "Activo" : "Pendiente", tone: ok ? "green" : "amber" }],
+      accent: ok ? "green" : "blue",
+    };
+  });
+  return {
+    title,
+    subtitle: "Registros de la sección",
+    searchPlaceholder: `Buscar en ${title}`,
+    items,
+  };
+}
 
 export type NativeLine = { Icon: ComponentType<{ className?: string }>; text: string };
 export type NativeItem = {
@@ -33,9 +60,16 @@ export type NativeListConfig = {
   showAdd?: boolean;
 };
 
-export default function NativeListScreen({ config }: { config: NativeListConfig }) {
+export default function NativeListScreen({
+  config,
+  onBack,
+}: {
+  config: NativeListConfig;
+  onBack?: () => void;
+}) {
   const { title, subtitle, searchPlaceholder, pills, items, showAdd = true } = config;
   const [active, setActive] = useState(pills?.[0]?.key ?? "all");
+  const [selected, setSelected] = useState<NativeItem | null>(null);
 
   const pillItems = useMemo(
     () =>
@@ -54,11 +88,17 @@ export default function NativeListScreen({ config }: { config: NativeListConfig 
     return items.filter((i) => i.bucket === active);
   }, [items, pills, active]);
 
+  if (selected) {
+    const d = detailFromItem(selected);
+    return <NativeDetailView {...d} onBack={() => setSelected(null)} />;
+  }
+
   return (
     <div className="pt-2">
       <ScreenHeader
         title={title}
         subtitle={subtitle}
+        onBack={onBack}
         onRefresh={() => {}}
         onAdd={showAdd ? () => {} : undefined}
       />
@@ -67,7 +107,7 @@ export default function NativeListScreen({ config }: { config: NativeListConfig 
 
       <div className="space-y-3 px-4 pt-3">
         {visible.map((it) => (
-          <Card key={it.id} accent={it.accent ?? "blue"}>
+          <Card key={it.id} accent={it.accent ?? "blue"} onClick={() => setSelected(it)}>
             <div className="flex items-start justify-between gap-3">
               <h3 className="truncate text-[17px] font-bold text-gray-900">{it.title}</h3>
               {it.right && (

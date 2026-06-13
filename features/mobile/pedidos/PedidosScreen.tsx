@@ -12,6 +12,7 @@ import {
   clp,
   ChevronRight,
 } from "@/components/mobile/ui";
+import PedidoDetail from "./PedidoDetail";
 
 type Tag = { label: string; tone: "amber" | "gray" | "blue" };
 type Order = {
@@ -44,6 +45,7 @@ const ORDERS: Order[] = [
 
 export default function PedidosScreen() {
   const [filter, setFilter] = useState<"todos" | "vencidos" | "validacion">("todos");
+  const [selected, setSelected] = useState<Order | null>(null);
 
   const counts = useMemo(
     () => ({
@@ -59,6 +61,10 @@ export default function PedidosScreen() {
     if (filter === "validacion") return ORDERS.filter((o) => o.validacion);
     return ORDERS;
   }, [filter]);
+
+  if (selected) {
+    return <PedidoDetail order={selected} onBack={() => setSelected(null)} />;
+  }
 
   return (
     <div className="pt-2">
@@ -89,7 +95,7 @@ export default function PedidosScreen() {
 
       <div className="space-y-3 px-4 pt-3">
         {visible.map((o) => (
-          <Card key={o.id} accent={o.overdue ? "red" : "blue"}>
+          <Card key={o.id} accent={o.overdue ? "red" : "blue"} onClick={() => setSelected(o)}>
             <div className="flex items-start justify-between gap-3">
               <h3 className="truncate text-[17px] font-bold text-gray-900">{o.name}</h3>
               <span className="shrink-0 text-[17px] font-bold text-gray-900">{clp(o.amount)}</span>
